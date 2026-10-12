@@ -1,0 +1,7 @@
+.idea/
+.env
+bin/
+dist/
+coverage.out
+.gocache/
+*.exe

@@ -1,0 +1,65 @@
+address: ":8080"
+
+storage:
+  # memory | mysql | postgres. Dameng/custom databases inject a Storage implementation
+  # or construct gormstore with a custom gorm.Dialector in embedded mode.
+  driver: memory
+  dsn: ""
+  auto_migrate: false
+
+models:
+  default:
+    provider: openai
+    model: gpt-4o-mini
+    base_url: "https://api.openai.com/v1"
+    credential_ref: OPENAI_API_KEY
+    timeout: 60s
+    temperature: 0.7
+    max_tokens: 4096
+
+  # Native Anthropic Messages API.
+  # claude:
+  #   provider: claude
+  #   model: claude-sonnet-4-5
+  #   credential_ref: ANTHROPIC_API_KEY
+  #   timeout: 60s
+
+  # Native Google Gemini API.
+  # gemini:
+  #   provider: gemini
+  #   model: gemini-2.5-flash
+  #   credential_ref: GEMINI_API_KEY
+  #   timeout: 60s
+
+  # The following providers use their official OpenAI-compatible endpoints.
+  # base_url has a built-in default and can be overridden for a proxy or gateway.
+  # deepseek:
+  #   provider: deepseek
+  #   model: deepseek-chat
+  #   credential_ref: DEEPSEEK_API_KEY
+  # doubao:
+  #   provider: doubao-seed
+  #   model: your-ark-endpoint-id
+  #   credential_ref: ARK_API_KEY
+  # kimi:
+  #   provider: kimi
+  #   model: kimi-k2.5
+  #   credential_ref: MOONSHOT_API_KEY
+  # qwen:
+  #   provider: qwen
+  #   model: qwen-plus
+  #   credential_ref: DASHSCOPE_API_KEY
+  # glm:
+  #   provider: glm
+  #   model: glm-4.5
+  #   credential_ref: ZHIPU_API_KEY
+  # minimax:
+  #   provider: minimax
+  #   model: MiniMax-M2.1
+  #   credential_ref: MINIMAX_API_KEY
+
+deep_presets:
+  enterprise-default:
+    max_iterations: 30
+    without_write_todos: false
+    without_general_sub_agent: false
